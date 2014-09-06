@@ -1,9 +1,20 @@
 ' Gambas class file
 
+Private Const KEY_MENUBAR As String = "menubar"
 Private $sTemp As String = Temp$()
-Private $sSourceFilePath As String
+Private $sFilePath As String
+Private $sFileEncoding As String
+Private $sFileType As String
 
 Public Sub _new()
+
+End
+
+Static Public Sub Run()
+
+  Dim hForm As New FMain
+
+  hForm.Show()
 
 End
 
@@ -15,6 +26,9 @@ Public Sub Action_Activate(key As String) As Boolean
 
     Case "close"
       CloseFile()
+
+    Case "menubar"
+      Menubar()
 
     Case "open"
       OpenFile()
@@ -43,27 +57,15 @@ End
 Public Sub Form_Open()
 
   Settings.Read(Me)
-  InitCharacterSets()
+  lstFrom.List = MUtil.CharacterSets()
+  lstTo.List = lstFrom.List
+  UpdateAvailability(False)
 
 End
 
 Public Sub Form_Close()
 
   Settings.Write(Me)
-
-End
-
-Private Sub InitCharacterSets()
-
-  Dim sIconvList As String
-  Dim aIconvList As String[]
-
-  Shell "iconv --list" To sIconvList
-  sIconvList = Replace$(sIconvList, "//", "")
-  aIconvList = Split(sIconvList, "\n")
-  aIconvList.Remove(aIconvList.Max, 1)
-  lstFrom.List = aIconvList
-  lstTo.List = aIconvList
 
 End
 
@@ -88,36 +90,32 @@ Private Sub CloseFile()
   txaTo.Clear()
   lstFrom.Index = 0
   lstTo.Index = 0
-  mnuClose.Enabled = False
+  UpdateAvailability(False)
 
 End
 
 Private Sub OpenFile()
 
-  Dim sCharacterSet As String
-
   Dialog.Title = ("Open")
-  '  Dialog.Path = "."
 
   If Dialog.OpenFile() Then
     Return
   Endif
-  $sSourceFilePath = Dialog.Path
-  Shell "file --brief --mime-encoding " & $sSourceFilePath To sCharacterSet
-  sCharacterSet = Trim(Upper(sCharacterSet))
 
-  Debug "Charset " & sCharacterSet
+  $sFilePath = Dialog.Path
+  $sFileEncoding = MUtil.MimeEncoding($sFilePath)
+  $sFileType = MUtil.MimeType($sFilePath)
 
-  If sCharacterSet = "BINARY" Then
+  If $sFileEncoding = "BINARY" Then
     Message.Title = ("Error")
-    Message.Error(Subst("&1 is a binary file.", $sSourceFilePath))
+    Message.Error(Subst("&1 is a binary file.", $sFilePath))
   Else
-    txaFrom.Text = File.Load($sSourceFilePath)
-    mnuClose.Enabled = True
+    txaFrom.Text = File.Load($sFilePath)
 
-    txaTo.Text = sCharacterSet
-    lstFrom.Index = lstFrom.Find(sCharacterSet)
-    lstTo.Index = 1 ' lstTo.Find(sCharacterSet)
+    txaTo.Text = $sFileEncoding
+    lstFrom.Index = lstFrom.Find($sFileEncoding)
+    lstTo.Index = lstTo.Find($sFileEncoding)
+    UpdateAvailability(True)
   Endif
 
 End
@@ -130,11 +128,11 @@ End
 
 Private Sub Preview()
 
-  Dim sBaseCommand As String = "iconv -f &1 -t &2 &3"
+  Dim sBaseCommand As String = "iconv -c -f &1 -t &2 &3"
   Dim sCommand As String
   Dim sResult As String
 
-  sCommand = Subst(sBaseCommand, lstFrom.Text, lstTo.Text, $sSourceFilePath)
+  sCommand = Subst(sBaseCommand, lstFrom.Text, lstTo.Text, $sFilePath)
   Debug sCommand
   Try Shell sCommand To sResult
   txaTo.Text = sResult
@@ -150,5 +148,30 @@ End
 Public Sub Preview_Select()
 
   '  Preview()
+
+End
+
+Private Sub Menubar()
+
+  Me.Menus.Visible = Settings[KEY_MENUBAR, False]
+
+End
+
+Public Sub UpdateAvailability(bOpen As Boolean)
+
+  mnuClose.Enabled = bOpen
+  mnuSave.Enabled = bOpen
+  chkOmit.Enabled = bOpen
+  optIgnore.Enabled = bOpen
+  optNormal.Enabled = bOpen
+  optTranslit.Enabled = bOpen
+
+  If bOpen Then
+    lblFile.Text = $sFilePath
+    lblStatus.Text = $sFileEncoding & " " & $sFileType
+  Else
+    lblFile.Text = ""
+    lblStatus.Text = ""
+  Endif
 
 End

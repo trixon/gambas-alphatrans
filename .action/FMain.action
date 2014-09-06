@@ -9,6 +9,10 @@
     Text = "Close"
     Shortcut = "Ctrl+W"
   }
+  { Action menubar
+    Text = "Hide menubar"
+    Shortcut = "Ctrl+Alt+M"
+  }
   { Action open
     Text = "Open"
     Shortcut = "Ctrl+O"
@@ -20,6 +24,14 @@
   { Action save
     Text = "Save"
     Shortcut = "Ctrl+S"
+  }
+}
+
+{ Toolbars
+  { Toolbar MainToolbar
+    Text = "ToolBar1"
+    List = ""
+    Default = "$chkOmit,$lblMode,$optNormal,$optTranslit,$optIgnore"
   }
 }
 

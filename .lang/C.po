@@ -6,13 +6,96 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: .project:1
 msgid "gbiconv"
+msgstr ""
+
+#: FMain.form:40
+msgid "File"
+msgstr ""
+
+#: FMain.form:44
+msgid "Open"
+msgstr ""
+
+#: FMain.form:50
+msgid "Close"
+msgstr ""
+
+#: FMain.form:57
+msgid "Save"
+msgstr ""
+
+#: FMain.form:66
+msgid "Quit"
+msgstr ""
+
+#: FMain.form:72
+msgid "View"
+msgstr ""
+
+#: FMain.form:76
+msgid "Hide menubar"
+msgstr ""
+
+#: FMain.form:82
+msgid "Help"
+msgstr ""
+
+#: FMain.form:86
+msgid "About"
+msgstr ""
+
+#: FMain.form:93 FTest.form:18
+msgid "ToolBar1"
+msgstr ""
+
+#: FMain.form:97
+msgid "Omit invalid characters from output."
+msgstr ""
+
+#: FMain.form:99
+msgid "Omit"
+msgstr "Utelämna"
+
+#: FMain.form:105
+msgid "Mode:"
+msgstr ""
+
+#: FMain.form:111
+msgid "Normal"
+msgstr ""
+
+#: FMain.form:118
+msgid "Translit"
+msgstr ""
+
+#: FMain.form:124
+msgid "Ignore"
+msgstr ""
+
+#: FMain.form:140
+msgid "File:"
+msgstr ""
+
+#: FMain.form:158
+msgid "From"
+msgstr ""
+
+#: FMain.form:175
+msgid "To"
+msgstr ""
+
+#: FMain.form:193
+msgid "Preview"
+msgstr ""
+
+#: FMain.form:209
+msgid "Label1"
 msgstr ""
 
 #: FMain.class:78
@@ -25,106 +108,22 @@ msgstr ""
 
 #: FMain.class:110 MMain.module:11
 msgid "Error"
-msgstr "Fel"
-
-#: FMain.class:170
-msgid "File: &1"
-msgstr "Fil: &1"
-
-#: FMain.form:40
-msgid "File"
-msgstr "Arkiv"
-
-#: FMain.form:44
-msgid "Open"
-msgstr "Öppna"
-
-#: FMain.form:50
-msgid "Close"
-msgstr "Stäng"
-
-#: FMain.form:57
-msgid "Save"
-msgstr "Spara"
-
-#: FMain.form:66
-msgid "Quit"
-msgstr "Avsluta"
-
-#: FMain.form:72
-msgid "View"
-msgstr "Visa"
-
-#: FMain.form:76
-msgid "Hide menubar"
 msgstr ""
 
-#: FMain.form:82
-msgid "Help"
-msgstr "Hjälp"
-
-#: FMain.form:86
-msgid "About"
-msgstr "Om"
-
-#: FMain.form:93 FTest.form:17
-msgid "ToolBar1"
-msgstr ""
-
-#: FMain.form:97
-msgid "Omit invalid characters from output."
-msgstr ""
-
-#: FMain.form:99
-msgid "Omit"
-msgstr "Hoppa över"
-
-#: FMain.form:105
-msgid "Mode:"
-msgstr "Läge:"
-
-#: FMain.form:111
-msgid "Normal"
-msgstr "Normal"
-
-#: FMain.form:118
-msgid "Translit"
-msgstr ""
-
-#: FMain.form:124
-msgid "Ignore"
-msgstr "Ignorera"
-
-#: FMain.form:140
-msgid "File:"
-msgstr "Fil:"
-
-#: FMain.form:158
-msgid "From"
-msgstr "Från"
-
-#: FMain.form:175
-msgid "To"
-msgstr "Till"
-
-#: FMain.form:193
-msgid "Preview"
-msgstr "Förhandsgranskning"
-
-#: FMain.form:209
-msgid "Label1"
-msgstr ""
-
-#: FTest.form:22
+#: FTest.form:23
 msgid "ComboBox1"
 msgstr ""
 
-#: FTest.form:27
+#: FTest.form:28
 msgid "ToolButton1"
 msgstr ""
 
-#: FTest.form:32
+#: FTest.form:33
 msgid "ToolButton2"
+msgstr ""
+
+#: FTest.form:40
+msgid "TextArea1"
 msgstr ""
 
 #: MMain.module:12

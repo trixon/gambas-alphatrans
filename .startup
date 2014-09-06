@@ -1,12 +1,14 @@
-FMain
+MMain
 gbiconv
 0
 0
 0.0.1
 
 gb.image
-gb.gui
+gb.qt4
 gb.form
+gb.desktop
 gb.settings
+gb.form.mdi
 /home/pata/git/gambas/gbiconv/libpkcommons.gambas
 

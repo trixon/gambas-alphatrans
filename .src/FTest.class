@@ -1,0 +1,7 @@
+' Gambas class file
+
+Public Sub Form_Open()
+
+  TextArea1.Text = File.Load("~/iso.txt")
+
+End

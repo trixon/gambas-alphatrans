@@ -1,8 +1,8 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,105,83)
-  Arrangement = Arrange.Fill
+  MoveScaled(0,0,105,45)
+  Arrangement = Arrange.Vertical
   { mnuFile Menu
     Text = ("File")
     { mnuOpen Menu
@@ -29,6 +29,14 @@
       Shortcut = "Ctrl+Q"
     }
   }
+  { mnuView Menu
+    Text = ("View")
+    { mnuViewMenu Menu
+      Action = "menubar"
+      Text = ("Hide menubar")
+      Shortcut = "Ctrl+Alt+M"
+    }
+  }
   { mnuHelp Menu
     Text = ("Help")
     { mnuAbout Menu
@@ -36,36 +44,108 @@
       Text = ("About")
     }
   }
-  { HSplit1 HBox
-    MoveScaled(1,1,98,76)
-    { txaFrom TextArea
-      MoveScaled(1,6,16,69)
-      Font = Font["Monospace"]
-      Expand = True
-      ReadOnly = True
+  { ToolBar1 ToolBar
+    MoveScaled(0,0,88,4)
+    Key = "MainToolbar"
+    Text = ("ToolBar1")
+    { chkOmit CheckBox
+      MoveScaled(0,0,8,4)
+      ToolTip = ("Omit invalid characters from output.")
+      AutoResize = True
+      Text = ("Omit")
     }
-    { Panel1 HBox
-      MoveScaled(20,6,54,67)
+    { lblMode Label
+      MoveScaled(9,1,24,4)
+      AutoResize = True
+      Text = ("Mode:")
+    }
+    { optNormal RadioButton
+      MoveScaled(20,1,24,4)
+      AutoResize = True
+      Text = ("Normal")
+      Value = True
+    }
+    { optTranslit RadioButton
+      MoveScaled(46,1,24,4)
+      AutoResize = True
+      Text = ("Translit")
+    }
+    { optIgnore RadioButton
+      MoveScaled(61,1,24,4)
+      AutoResize = True
+      Text = ("Ignore")
+    }
+  }
+  { HSplit1 HBox
+    MoveScaled(-1,3,98,34)
+    Expand = True
+    { Panel2 VBox
+      MoveScaled(1,6,17,26)
+      Expand = True
+      { lblFile Label
+        MoveScaled(1,1,24,4)
+        Padding = 2
+        AutoResize = True
+        Text = ("File:")
+      }
+      { txaFrom TextArea
+        MoveScaled(0,5,16,21)
+        Font = Font["Monospace"]
+        Expand = True
+        ReadOnly = True
+      }
+    }
+    { Panel1 VBox
+      MoveScaled(20,6,14,22)
+      { Label4 Label
+        MoveScaled(1,1,24,4)
+        Padding = 2
+        AutoResize = True
+        Text = ("From")
+      }
       { lstFrom ListBox Preview
         Name = "lstFrom"
-        MoveScaled(2,2,16,16)
+        MoveScaled(1,4,11,16)
         Expand = True
       }
-      { Panel2 Panel
-        MoveScaled(20,3,15,31)
+    }
+    { Panel3 VBox
+      MoveScaled(45,6,14,22)
+      { Label5 Label
+        MoveScaled(1,0,24,4)
+        Padding = 2
+        AutoResize = True
+        Text = ("To")
       }
       { lstTo ListBox Preview
         Name = "lstTo"
-        MoveScaled(36,2,16,16)
+        MoveScaled(1,3,11,16)
         Expand = True
       }
     }
-    { txaTo TextArea
-      MoveScaled(79,5,17,68)
-      Font = Font["Monospace"]
+    { VBox1 VBox
+      MoveScaled(72,6,24,24)
       Expand = True
-      ReadOnly = True
+      { Label3 Label
+        MoveScaled(1,1,24,4)
+        Padding = 2
+        AutoResize = True
+        Text = ("Preview")
+      }
+      { txaTo TextArea
+        MoveScaled(1,4,17,26)
+        Font = Font["Monospace"]
+        Expand = True
+        ReadOnly = True
+      }
     }
+  }
+  { lblStatus Label
+    MoveScaled(56,39,24,4)
+    Padding = 4
+    AutoResize = True
+    Text = ("Label1")
+    Border = Border.Sunken
   }
 }
 
@@ -80,6 +160,10 @@
     Text = "Close"
     Shortcut = "Ctrl+W"
   }
+  { Action menubar
+    Text = "Hide menubar"
+    Shortcut = "Ctrl+Alt+M"
+  }
   { Action open
     Text = "Open"
     Shortcut = "Ctrl+O"
@@ -91,5 +175,13 @@
   { Action save
     Text = "Save"
     Shortcut = "Ctrl+S"
+  }
+}
+
+{ Toolbars
+  { Toolbar MainToolbar
+    Text = "ToolBar1"
+    List = ""
+    Default = "$chkOmit,$lblMode,$optNormal,$optTranslit,$optIgnore"
   }
 }
