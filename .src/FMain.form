@@ -1,7 +1,8 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,50,50)
+  MoveScaled(0,0,105,83)
+  Arrangement = Arrange.Fill
   { mnuFile Menu
     Text = ("File")
     { mnuOpen Menu
@@ -12,6 +13,7 @@
     { mnuClose Menu
       Action = "close"
       Text = ("Close")
+      Enabled = False
       Shortcut = "Ctrl+W"
     }
     { mnuSave Menu
@@ -32,6 +34,37 @@
     { mnuAbout Menu
       Action = "about"
       Text = ("About")
+    }
+  }
+  { HSplit1 HBox
+    MoveScaled(1,1,98,76)
+    { txaFrom TextArea
+      MoveScaled(1,6,16,69)
+      Font = Font["Monospace"]
+      Expand = True
+      ReadOnly = True
+    }
+    { Panel1 HBox
+      MoveScaled(20,6,54,67)
+      { lstFrom ListBox Preview
+        Name = "lstFrom"
+        MoveScaled(2,2,16,16)
+        Expand = True
+      }
+      { Panel2 Panel
+        MoveScaled(20,3,15,31)
+      }
+      { lstTo ListBox Preview
+        Name = "lstTo"
+        MoveScaled(36,2,16,16)
+        Expand = True
+      }
+    }
+    { txaTo TextArea
+      MoveScaled(79,5,17,68)
+      Font = Font["Monospace"]
+      Expand = True
+      ReadOnly = True
     }
   }
 }

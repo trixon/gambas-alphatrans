@@ -1,5 +1,8 @@
 ' Gambas class file
 
+Private $sTemp As String = Temp$()
+Private $sSourceFilePath As String
+
 Public Sub _new()
 
 End
@@ -40,12 +43,27 @@ End
 Public Sub Form_Open()
 
   Settings.Read(Me)
+  InitCharacterSets()
 
 End
 
 Public Sub Form_Close()
 
   Settings.Write(Me)
+
+End
+
+Private Sub InitCharacterSets()
+
+  Dim sIconvList As String
+  Dim aIconvList As String[]
+
+  Shell "iconv --list" To sIconvList
+  sIconvList = Replace$(sIconvList, "//", "")
+  aIconvList = Split(sIconvList, "\n")
+  aIconvList.Remove(aIconvList.Max, 1)
+  lstFrom.List = aIconvList
+  lstTo.List = aIconvList
 
 End
 
@@ -66,18 +84,71 @@ End
 
 Private Sub CloseFile()
 
-  Debug
+  txaFrom.Clear()
+  txaTo.Clear()
+  lstFrom.Index = 0
+  lstTo.Index = 0
+  mnuClose.Enabled = False
 
 End
 
 Private Sub OpenFile()
 
-  Debug
+  Dim sCharacterSet As String
+
+  Dialog.Title = ("Open")
+  '  Dialog.Path = "."
+
+  If Dialog.OpenFile() Then
+    Return
+  Endif
+  $sSourceFilePath = Dialog.Path
+  Shell "file --brief --mime-encoding " & $sSourceFilePath To sCharacterSet
+  sCharacterSet = Trim(Upper(sCharacterSet))
+
+  Debug "Charset " & sCharacterSet
+
+  If sCharacterSet = "BINARY" Then
+    Message.Title = ("Error")
+    Message.Error(Subst("&1 is a binary file.", $sSourceFilePath))
+  Else
+    txaFrom.Text = File.Load($sSourceFilePath)
+    mnuClose.Enabled = True
+
+    txaTo.Text = sCharacterSet
+    lstFrom.Index = lstFrom.Find(sCharacterSet)
+    lstTo.Index = 1 ' lstTo.Find(sCharacterSet)
+  Endif
 
 End
 
 Private Sub SaveFile()
 
   Debug
+
+End
+
+Private Sub Preview()
+
+  Dim sBaseCommand As String = "iconv -f &1 -t &2 &3"
+  Dim sCommand As String
+  Dim sResult As String
+
+  sCommand = Subst(sBaseCommand, lstFrom.Text, lstTo.Text, $sSourceFilePath)
+  Debug sCommand
+  Try Shell sCommand To sResult
+  txaTo.Text = sResult
+
+End
+
+Public Sub Preview_Click()
+
+  Preview()
+
+End
+
+Public Sub Preview_Select()
+
+  '  Preview()
 
 End
