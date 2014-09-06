@@ -1,0 +1,25 @@
+# Gambas Action File 3.0
+
+{ Actions
+  { Action about
+    Text = "About"
+    Shortcut = ""
+  }
+  { Action close
+    Text = "Close"
+    Shortcut = "Ctrl+W"
+  }
+  { Action open
+    Text = "Open"
+    Shortcut = "Ctrl+O"
+  }
+  { Action quit
+    Text = "Quit"
+    Shortcut = "Ctrl+Q"
+  }
+  { Action save
+    Text = "Save"
+    Shortcut = "Ctrl+S"
+  }
+}
+

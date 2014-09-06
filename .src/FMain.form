@@ -1,6 +1,62 @@
 # Gambas Form File 3.0
 
-{ FMain Form
+{ Form Form
   MoveScaled(0,0,50,50)
+  { mnuFile Menu
+    Text = ("File")
+    { mnuOpen Menu
+      Action = "open"
+      Text = ("Open")
+      Shortcut = "Ctrl+O"
+    }
+    { mnuClose Menu
+      Action = "close"
+      Text = ("Close")
+      Shortcut = "Ctrl+W"
+    }
+    { mnuSave Menu
+      Action = "save"
+      Text = ("Save")
+      Shortcut = "Ctrl+S"
+    }
+    { Menu1 Menu
+    }
+    { mnuQuit Menu
+      Action = "quit"
+      Text = ("Quit")
+      Shortcut = "Ctrl+Q"
+    }
+  }
+  { mnuHelp Menu
+    Text = ("Help")
+    { mnuAbout Menu
+      Action = "about"
+      Text = ("About")
+    }
+  }
 }
 
+# Gambas Action File 3.0
+
+{ Actions
+  { Action about
+    Text = "About"
+    Shortcut = ""
+  }
+  { Action close
+    Text = "Close"
+    Shortcut = "Ctrl+W"
+  }
+  { Action open
+    Text = "Open"
+    Shortcut = "Ctrl+O"
+  }
+  { Action quit
+    Text = "Quit"
+    Shortcut = "Ctrl+Q"
+  }
+  { Action save
+    Text = "Save"
+    Shortcut = "Ctrl+S"
+  }
+}
