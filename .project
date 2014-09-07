@@ -4,13 +4,13 @@ Title=gbiconv
 Startup=MMain
 Version=0.0.1
 Component=gb.image
-Component=gb.qt4
+Component=gb.gui
 Component=gb.form
 Component=gb.desktop
 Component=gb.settings
 Component=gb.form.mdi
 Library=/home/pata/git/gambas/gbiconv/libpkcommons.gambas
-Environment="GB_GUIXX=gb.qt4\nLC_ALL=sv_SE.UTF-8"
+Environment="GB_GUIKK=gb.qt4\nLC_ALLX=sv_SE.UTF-8\nLANG=C\nLC_ALL=C"
 TabSize=2
 Translate=1
 Language=en
