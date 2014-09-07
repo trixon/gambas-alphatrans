@@ -3,12 +3,15 @@
 Private Const KEY_MENUBAR As String = "menubar"
 
 Private $sTempFile As String = Temp$()
+Private $sEncodeFrom As String
+Private $sEncodeTo As String
 Private $sFilePath As String
 Private $sFileEncoding As String
 Private $sFileType As String
 Private $sMode As String
 Private $sOmit As String
 Private $aCharacterSets As String[]
+Private $bSourcePreviewLoaded As Boolean
 
 Public Sub _new()
 
@@ -35,7 +38,7 @@ Public Sub Action_Activate(key As String) As Boolean
       Menubar()
 
     Case "open"
-      OpenFile()
+      RequestOpenFile()
 
     Case "save"
       SaveFile()
@@ -65,6 +68,8 @@ Public Sub Form_Open()
   lstFrom.List = MUtil.CharacterSets()
   lstTo.List = lstFrom.List
   UpdateAvailability(False)
+
+  OpenFile("~/räksmörgås.txt")
 
 End
 
@@ -99,7 +104,20 @@ Private Sub CloseFile()
 
 End
 
-Private Sub OpenFile()
+Private Sub OpenFile(sFilePath As String)
+
+  $sFilePath = sFilePath
+  $sFileEncoding = MUtil.MimeEncoding($sFilePath)
+  $sFileType = MUtil.MimeType($sFilePath)
+
+  PreviewSourceFile($sFilePath, $sFileEncoding)
+  lstFrom.Index = lstFrom.Find($sFileEncoding)
+
+  UpdateAvailability(True)
+
+End
+
+Private Sub RequestOpenFile()
 
   Dialog.Title = ("Open")
 
@@ -107,21 +125,32 @@ Private Sub OpenFile()
     Return
   Endif
 
-  $sFilePath = Dialog.Path
-  $sFileEncoding = MUtil.MimeEncoding($sFilePath)
-  $sFileType = MUtil.MimeType($sFilePath)
+  OpenFile(Dialog.Path)
 
-  If $sFileEncoding = "BINARY" Then
+End
+
+Private Sub PreviewSourceFile(sPath As String, sEncoding As String)
+
+  $sEncodeFrom = sEncoding
+  $bSourcePreviewLoaded = True
+
+  If sEncoding = "BINARY" Then
     Message.Title = ("Error")
-    Message.Error(Subst("&1 is a binary file.", $sFilePath))
+    Message.Error(Subst("&1 is a binary file.", sPath))
   Else
-    txaFrom.Text = Conv(File.Load($sFilePath), $sFileEncoding, "UTF-8")
-
-    txaTo.Text = $sFileEncoding
-    lstFrom.Index = lstFrom.Find($sFileEncoding)
-    lstTo.Index = lstTo.Find($sFileEncoding)
-    UpdateAvailability(True)
+    txaFrom.Text = Conv(File.Load(sPath), sEncoding, "UTF-8")
+    'txaTo.Text = $sFileEncoding
+    'lstFrom.Index = lstFrom.Find($sFileEncoding)
+    'lstTo.Index = lstTo.Find($sFileEncoding)
   Endif
+
+Finally
+  txaFrom.Pos = 0
+  UpdateStatusIndicators()
+
+Catch
+  txaFrom.Text = Subst(("Preview from &1 is not possible\n however, a convertion might still be possible."), sEncoding)
+  $bSourcePreviewLoaded = False
 
 End
 
@@ -129,10 +158,13 @@ Private Sub SaveFile()
 
   Dialog.Title = ("Save As")
   If Dialog.SaveFile() Then Return
+
   If Exist(Dialog.Path) Then
     Kill Dialog.Path
   Endif
+
   Copy $sTempFile To Dialog.Path
+
 Catch
   Message.Info(Error.Text)
 
@@ -165,7 +197,7 @@ End
 
 Public Sub Preview_Click()
 
-  Preview()
+  'Preview()
 
 End
 
@@ -181,7 +213,7 @@ Private Sub Menubar()
 
 End
 
-Public Sub UpdateAvailability(bOpen As Boolean)
+Private Sub UpdateAvailability(bOpen As Boolean)
 
   mnuClose.Enabled = bOpen
   mnuSave.Enabled = bOpen
@@ -196,14 +228,22 @@ Public Sub UpdateAvailability(bOpen As Boolean)
   lstTo.Enabled = bOpen
 
   If bOpen Then
-    lblFrom.Text = Subst(("Preview (&1➜UTF-8)"), lstFrom.Text) '$sFilePath
+    '    lblFrom.Text = Subst(("Preview (&1➜UTF-8)"), lstFrom.Text) '$sFilePath
     'lblStatus.Text = $sFileEncoding & " " & $sFileType
-    lblStatusEncoding.Text = Subst("Encoding: &1  Type: &2  &3", $sFileEncoding, $sFileType, $sFilePath)
+    '   lblStatusEncoding.Text = Subst("Encoding: &1  Type: &2  &3", $sFileEncoding, $sFileType, $sFilePath)
   Else
     lblFrom.Text = ""
     lblTo.Text = ""
     lblStatusEncoding.Text = ""
   Endif
+
+End
+
+Private Sub UpdateStatusIndicators()
+
+  lblFrom.Text = Subst(("Preview (&1➜UTF-8)"), $sEncodeFrom) '$sFilePath
+  'lblStatus.Text = $sFileEncoding & " " & $sFileType
+  lblStatusEncoding.Text = Subst("Encoding: &1  Type: &2  &3", $sFileEncoding, $sFileType, $sFilePath)
 
 End
 
@@ -232,5 +272,23 @@ Public Sub chkOmit_Click()
   Else
     $sOmit = ""
   Endif
+
+End
+
+Public Sub lstFrom_Click()
+
+  PreviewSourceFile($sFilePath, lstFrom.Text)
+
+End
+
+Public Sub lstFrom_Select()
+
+  PreviewSourceFile($sFilePath, lstFrom.Text)
+
+End
+
+Public Sub lblStatusEncoding_MouseDown()
+
+  lstFrom.Index = lstFrom.Find($sFileEncoding)
 
 End

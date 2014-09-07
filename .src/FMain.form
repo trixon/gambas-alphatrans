@@ -114,7 +114,7 @@
     MoveScaled(-1,7,98,34)
     Expand = True
     { Panel1 VBox
-      MoveScaled(3,2,14,22)
+      MoveScaled(3,2,15,22)
       { Label4 Label
         MoveScaled(1,1,24,4)
         Padding = 2
@@ -124,8 +124,7 @@
       { txtFrom TextBox
         MoveScaled(1,5,24,4)
       }
-      { lstFrom ListBox Preview
-        Name = "lstFrom"
+      { lstFrom ListBox
         MoveScaled(1,11,11,9)
         Expand = True
       }
@@ -147,7 +146,7 @@
       }
     }
     { Panel3 VBox
-      MoveScaled(45,6,14,22)
+      MoveScaled(45,6,15,22)
       { Label5 Label
         MoveScaled(1,0,24,4)
         Padding = 2
@@ -185,6 +184,7 @@
     AutoResize = True
     { lblStatusEncoding Label
       MoveScaled(0,0,8,4)
+      Expand = True
       Padding = 4
       AutoResize = True
       Text = ("Label1")
