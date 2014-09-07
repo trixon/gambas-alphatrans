@@ -15,116 +15,128 @@ msgstr ""
 msgid "gbiconv"
 msgstr ""
 
-#: FMain.class:78
+#: FMain.class:83
 msgid "Copyright © 2014 Patrik Karlsson"
 msgstr ""
 
-#: FMain.class:79
+#: FMain.class:84
 msgid "iconv gui"
 msgstr ""
 
-#: FMain.class:110 MMain.module:11
+#: FMain.class:115 MMain.module:11
 msgid "Error"
 msgstr "Fel"
 
-#: FMain.class:170
-msgid "File: &1"
-msgstr "Fil: &1"
-
-#: FMain.form:40
-msgid "File"
-msgstr "Arkiv"
-
-#: FMain.form:44
-msgid "Open"
-msgstr "Öppna"
-
-#: FMain.form:50
-msgid "Close"
-msgstr "Stäng"
-
-#: FMain.form:57
+#: FMain.class:130
 msgid "Save"
 msgstr "Spara"
 
-#: FMain.form:66
+#: FMain.form:47
+msgid "File"
+msgstr "Arkiv"
+
+#: FMain.form:51
+msgid "Open..."
+msgstr "Öppna..."
+
+#: FMain.form:57
+msgid "Close"
+msgstr "Stäng"
+
+#: FMain.form:65
+msgid "Save As..."
+msgstr "Spara som..."
+
+#: FMain.form:74
 msgid "Quit"
 msgstr "Avsluta"
 
-#: FMain.form:72
+#: FMain.form:80
 msgid "View"
 msgstr "Visa"
 
-#: FMain.form:76
+#: FMain.form:84
 msgid "Hide menubar"
 msgstr ""
 
-#: FMain.form:82
+#: FMain.form:90
 msgid "Help"
 msgstr "Hjälp"
 
-#: FMain.form:86
+#: FMain.form:94
 msgid "About"
 msgstr "Om"
 
-#: FMain.form:93 FTest.form:17
+#: FMain.form:101 FTest.form:18
 msgid "ToolBar1"
 msgstr ""
 
-#: FMain.form:97
-msgid "Omit invalid characters from output."
-msgstr ""
+#: FMain.form:107
+msgid "Open"
+msgstr "Öppna"
 
-#: FMain.form:99
-msgid "Omit"
-msgstr "Hoppa över"
+#: FMain.form:115
+msgid "Save As"
+msgstr "Spara som"
 
-#: FMain.form:105
+#: FMain.form:138
 msgid "Mode:"
 msgstr "Läge:"
 
-#: FMain.form:111
+#: FMain.form:145
 msgid "Normal"
 msgstr "Normal"
 
-#: FMain.form:118
+#: FMain.form:154
 msgid "Translit"
 msgstr ""
 
-#: FMain.form:124
+#: FMain.form:162
 msgid "Ignore"
 msgstr "Ignorera"
 
-#: FMain.form:140
+#: FMain.form:167
+msgid "Omit invalid characters from output."
+msgstr ""
+
+#: FMain.form:169
+msgid "Omit"
+msgstr "Hoppa över"
+
+#: FMain.form:185
 msgid "File:"
 msgstr "Fil:"
 
-#: FMain.form:158
+#: FMain.form:203
 msgid "From"
 msgstr "Från"
 
-#: FMain.form:175
+#: FMain.form:224
 msgid "To"
 msgstr "Till"
 
-#: FMain.form:193
+#: FMain.form:246
 msgid "Preview"
 msgstr "Förhandsgranskning"
 
-#: FMain.form:209
+#: FMain.form:262
 msgid "Label1"
 msgstr ""
 
-#: FTest.form:22
+#: FTest.form:23
 msgid "ComboBox1"
 msgstr ""
 
-#: FTest.form:27
+#: FTest.form:28
 msgid "ToolButton1"
 msgstr ""
 
-#: FTest.form:32
+#: FTest.form:33
 msgid "ToolButton2"
+msgstr ""
+
+#: FTest.form:40
+msgid "TextArea1"
 msgstr ""
 
 #: MMain.module:12

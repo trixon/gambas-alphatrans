@@ -127,7 +127,14 @@ End
 
 Private Sub SaveFile()
 
-  Debug
+  Dialog.Title = ("Save As")
+  If Dialog.SaveFile() Then Return
+  If Exist(Dialog.Path) Then
+    Kill Dialog.Path
+  Endif
+  Copy $sTempFile To Dialog.Path
+Catch
+  Message.Info(Error.Text)
 
 End
 
@@ -178,17 +185,24 @@ Public Sub UpdateAvailability(bOpen As Boolean)
 
   mnuClose.Enabled = bOpen
   mnuSave.Enabled = bOpen
+  tbtSave.Enabled = bOpen
   chkOmit.Enabled = bOpen
   optIgnore.Enabled = bOpen
   optNormal.Enabled = bOpen
   optTranslit.Enabled = bOpen
+  txtFrom.Enabled = bOpen
+  txtTo.Enabled = bOpen
+  lstFrom.Enabled = bOpen
+  lstTo.Enabled = bOpen
 
   If bOpen Then
-    lblFile.Text = $sFilePath
-    lblStatus.Text = $sFileEncoding & " " & $sFileType
+    lblFrom.Text = Subst(("Preview (&1➜UTF-8)"), lstFrom.Text) '$sFilePath
+    'lblStatus.Text = $sFileEncoding & " " & $sFileType
+    lblStatusEncoding.Text = Subst("Encoding: &1  Type: &2  &3", $sFileEncoding, $sFileType, $sFilePath)
   Else
-    lblFile.Text = ""
-    lblStatus.Text = ""
+    lblFrom.Text = ""
+    lblTo.Text = ""
+    lblStatusEncoding.Text = ""
   Endif
 
 End

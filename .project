@@ -10,7 +10,7 @@ Component=gb.desktop
 Component=gb.settings
 Component=gb.form.mdi
 Library=/home/pata/git/gambas/gbiconv/libpkcommons.gambas
-Environment="GB_GUIKK=gb.qt4\nLC_ALLX=sv_SE.UTF-8\nLANG=C\nLC_ALL=C"
+Environment="GB_GUIXX=gb.qt4\nLC_ALL=sv_SE.UTF-8\nLANGx=C\nLC_ALLx=C"
 TabSize=2
 Translate=1
 Language=en

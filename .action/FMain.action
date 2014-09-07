@@ -16,22 +16,25 @@
   { Action open
     Text = "Open"
     Shortcut = "Ctrl+O"
+    Picture = "icon:/medium/open"
   }
   { Action quit
     Text = "Quit"
     Shortcut = "Ctrl+Q"
+    Picture = "icon:/medium/quit"
   }
   { Action save
-    Text = "Save"
+    Text = "Save As"
     Shortcut = "Ctrl+S"
+    Picture = "icon:/medium/save-as"
   }
 }
 
 { Toolbars
   { Toolbar MainToolbar
     Text = "ToolBar1"
-    List = ""
-    Default = "$chkOmit,$lblMode,$optNormal,$optTranslit,$optIgnore"
+    List = "open,save,quit"
+    Default = "open,save,quit,|,-,$lblMode,$optNormal,$optTranslit,$optIgnore,$chkOmit"
   }
 }
 
