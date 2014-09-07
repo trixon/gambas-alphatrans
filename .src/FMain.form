@@ -59,19 +59,24 @@
       AutoResize = True
       Text = ("Mode:")
     }
-    { optNormal RadioButton
+    { optNormal RadioButton Mode
+      Name = "optNormal"
       MoveScaled(20,1,24,4)
       AutoResize = True
       Text = ("Normal")
       Value = True
     }
-    { optTranslit RadioButton
+    { optTranslit RadioButton Mode
+      Name = "optTranslit"
       MoveScaled(46,1,24,4)
+      Tag = "//TRANSLIT"
       AutoResize = True
       Text = ("Translit")
     }
-    { optIgnore RadioButton
+    { optIgnore RadioButton Mode
+      Name = "optIgnore"
       MoveScaled(61,1,24,4)
+      Tag = "//IGNORE"
       AutoResize = True
       Text = ("Ignore")
     }
@@ -103,9 +108,12 @@
         AutoResize = True
         Text = ("From")
       }
+      { txtFrom TextBox
+        MoveScaled(1,5,24,4)
+      }
       { lstFrom ListBox Preview
         Name = "lstFrom"
-        MoveScaled(1,4,11,16)
+        MoveScaled(1,11,11,9)
         Expand = True
       }
     }
@@ -117,9 +125,12 @@
         AutoResize = True
         Text = ("To")
       }
+      { txtTo TextBox
+        MoveScaled(1,5,24,4)
+      }
       { lstTo ListBox Preview
         Name = "lstTo"
-        MoveScaled(1,3,11,16)
+        MoveScaled(1,11,11,8)
         Expand = True
       }
     }

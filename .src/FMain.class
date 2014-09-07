@@ -1,10 +1,14 @@
 ' Gambas class file
 
 Private Const KEY_MENUBAR As String = "menubar"
-Private $sTemp As String = Temp$()
+
+Private $sTempFile As String = Temp$()
 Private $sFilePath As String
 Private $sFileEncoding As String
 Private $sFileType As String
+Private $sMode As String
+Private $sOmit As String
+Private $aCharacterSets As String[]
 
 Public Sub _new()
 
@@ -57,6 +61,7 @@ End
 Public Sub Form_Open()
 
   Settings.Read(Me)
+  $aCharacterSets = MUtil.CharacterSets()
   lstFrom.List = MUtil.CharacterSets()
   lstTo.List = lstFrom.List
   UpdateAvailability(False)
@@ -110,7 +115,7 @@ Private Sub OpenFile()
     Message.Title = ("Error")
     Message.Error(Subst("&1 is a binary file.", $sFilePath))
   Else
-    txaFrom.Text = File.Load($sFilePath)
+    txaFrom.Text = Conv(File.Load($sFilePath), $sFileEncoding, "UTF-8")
 
     txaTo.Text = $sFileEncoding
     lstFrom.Index = lstFrom.Find($sFileEncoding)
@@ -128,13 +133,25 @@ End
 
 Private Sub Preview()
 
-  Dim sBaseCommand As String = "iconv -c -f &1 -t &2 &3"
+  Dim sBaseCommand As String = "iconv --from-code &1 --to-code &2&3 &4 --output &5 &6"
   Dim sCommand As String
+  Dim sStatus As String
   Dim sResult As String
 
-  sCommand = Subst(sBaseCommand, lstFrom.Text, lstTo.Text, $sFilePath)
+  File.Save($sTempFile, "")
+  txaTo.Text = "Trying to load the converted file back to UTF-8"
+  sCommand = Subst(sBaseCommand, lstFrom.Text, lstTo.Text, $sMode, $sFilePath, $sTempFile, $sOmit) & " 2>&1"
   Debug sCommand
-  Try Shell sCommand To sResult
+  Try Shell sCommand To sStatus
+  sStatus = Trim(sStatus)
+  Debug sStatus
+
+  If sStatus Then
+    Message.Title = ("Error")
+    Message.Error(sStatus)
+  Endif
+
+  Try sResult = Conv(File.Load($sTempFile), lstTo.Text, "UTF-8")
   txaTo.Text = sResult
 
 End
@@ -147,7 +164,7 @@ End
 
 Public Sub Preview_Select()
 
-  '  Preview()
+  'Preview()
 
 End
 
@@ -172,6 +189,34 @@ Public Sub UpdateAvailability(bOpen As Boolean)
   Else
     lblFile.Text = ""
     lblStatus.Text = ""
+  Endif
+
+End
+
+Public Sub txtFrom_Change()
+
+  lstFrom.List = MUtil.FilterStringArray($aCharacterSets, txtFrom.Text)
+
+End
+
+Public Sub txtTo_Change()
+
+  lstTo.List = MUtil.FilterStringArray($aCharacterSets, txtTo.Text)
+
+End
+
+Public Sub Mode_Click()
+
+  $sMode = Last.Tag
+
+End
+
+Public Sub chkOmit_Click()
+
+  If chkOmit.Value Then
+    $sOmit = "-c"
+  Else
+    $sOmit = ""
   Endif
 
 End
