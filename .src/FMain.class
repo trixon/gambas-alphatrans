@@ -64,6 +64,10 @@ End
 Public Sub Form_Open()
 
   Settings.Read(Me)
+  Me.Menus.Visible = Settings[KEY_MENUBAR, True]
+  mnuViewMenu.Checked = Me.Menus.Visible
+  txtFrom.SetFocus()
+
   $aCharacterSets = MUtil.CharacterSets()
   lstFrom.List = MUtil.CharacterSets()
   lstTo.List = lstFrom.List
@@ -209,7 +213,8 @@ End
 
 Private Sub Menubar()
 
-  Me.Menus.Visible = Settings[KEY_MENUBAR, False]
+  Me.Menus.Visible = Not Me.Menus.Visible
+  Settings[KEY_MENUBAR] = Me.Menus.Visible
 
 End
 

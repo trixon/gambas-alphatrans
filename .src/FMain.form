@@ -34,7 +34,9 @@
     Text = ("View")
     { mnuViewMenu Menu
       Action = "menubar"
-      Text = ("Hide menubar")
+      Text = ("Menu")
+      Toggle = True
+      Checked = True
       Shortcut = "Ctrl+Alt+M"
     }
   }
@@ -204,7 +206,7 @@
     Shortcut = "Ctrl+W"
   }
   { Action menubar
-    Text = "Hide menubar"
+    Text = "Menu"
     Shortcut = "Ctrl+Alt+M"
   }
   { Action open

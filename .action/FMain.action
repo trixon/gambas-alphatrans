@@ -10,7 +10,7 @@
     Shortcut = "Ctrl+W"
   }
   { Action menubar
-    Text = "Hide menubar"
+    Text = "Menu"
     Shortcut = "Ctrl+Alt+M"
   }
   { Action open
