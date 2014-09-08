@@ -1,6 +1,7 @@
 ' Gambas class file
 
 Private Const KEY_MENUBAR As String = "menubar"
+Private Const KEY_TOOLBAR As String = "toolbar"
 
 Private $sTempFile As String = Temp$()
 Private $sEncodeFrom As String
@@ -40,11 +41,14 @@ Public Sub Action_Activate(key As String) As Boolean
     Case "open"
       RequestOpenFile()
 
+    Case "quit"
+      Me.Close
+
     Case "save"
       SaveFile()
 
-    Case "quit"
-      Me.Close
+    Case "toolbar"
+      Toolbar()
 
     Default
       Print "Unknown action: " & key
@@ -65,7 +69,10 @@ Public Sub Form_Open()
 
   Settings.Read(Me)
   Me.Menus.Visible = Settings[KEY_MENUBAR, True]
-  mnuViewMenu.Checked = Me.Menus.Visible
+  mnuSettingsMenu.Checked = Me.Menus.Visible
+  tlbMain.Visible = Settings[KEY_TOOLBAR, True]
+  mnuSettingsToolbar.Checked = tlbMain.Visible
+
   txtFrom.SetFocus()
 
   $aCharacterSets = MUtil.CharacterSets()
@@ -89,8 +96,8 @@ Private Sub About()
 
   With hForm
     .AppAuthor = "Patrik Karlsson"
-    .AppCopyright = ("Copyright © 2014 Patrik Karlsson")
-    .AppDescription = ("iconv gui")
+    .AppCopyright = "Copyright © 2014 Patrik Karlsson"
+    .AppDescription = ("Character encoding made easy")
     .AppLogo = Picture.Load("logo.png")
   End With
 
@@ -153,7 +160,7 @@ Finally
   UpdateStatusIndicators()
 
 Catch
-  txaFrom.Text = Subst(("Preview from &1 is not possible\n however, a convertion might still be possible."), sEncoding)
+  txaFrom.Text = Subst(("Preview from &1 is not possible.\nHowever, a conversion might still be possible."), sEncoding)
   $bSourcePreviewLoaded = False
 
 End
@@ -208,6 +215,13 @@ End
 Public Sub Preview_Select()
 
   'Preview()
+
+End
+
+Private Sub Toolbar()
+
+  tlbMain.Visible = Not tlbMain.Visible
+  Settings[KEY_TOOLBAR] = tlbMain.Visible
 
 End
 

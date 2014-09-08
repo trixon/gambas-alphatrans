@@ -13,135 +13,111 @@ msgstr ""
 
 #: .project:1
 msgid "gbiconv"
-msgstr ""
+msgstr "-"
 
-#: FMain.class:91
-msgid "Copyright © 2014 Patrik Karlsson"
-msgstr ""
+#: FMain.class:100
+msgid "Character encoding made easy"
+msgstr "Teckenkodning på ett enkelt sätt"
 
-#: FMain.class:92
-msgid "iconv gui"
-msgstr ""
-
-#: FMain.class:141 MMain.module:11
+#: FMain.class:149 MMain.module:11
 msgid "Error"
 msgstr "Fel"
 
-#: FMain.class:155
-msgid "Preview from &1 is not possible\n however, a convertion might still be possible."
-msgstr ""
+#: FMain.class:163
+msgid "Preview from &1 is not possible.\nHowever, a conversion might still be possible."
+msgstr "Förhandsgranskning från &1 är inte möjlig.\nMen, en konvertering kan fortfarande vara möjlig."
 
-#: FMain.class:248
+#: FMain.class:263
 msgid "Preview (&1➜UTF-8)"
-msgstr ""
+msgstr "Förhandsgranskning (&1➜UTF-8)"
 
-#: FMain.form:48
+#: FMain.form:49
 msgid "File"
 msgstr "Arkiv"
 
-#: FMain.form:52
+#: FMain.form:53
 msgid "Open..."
 msgstr "Öppna..."
 
-#: FMain.form:58
+#: FMain.form:59
 msgid "Close"
 msgstr "Stäng"
 
-#: FMain.form:66
+#: FMain.form:67
 msgid "Save As..."
 msgstr "Spara som..."
 
-#: FMain.form:75
+#: FMain.form:76
 msgid "Quit"
 msgstr "Avsluta"
 
-#: FMain.form:81
-msgid "View"
-msgstr "Visa"
+#: FMain.form:82
+msgid "Settings"
+msgstr "Inställningar"
 
-#: FMain.form:85
-msgid "Menu"
-msgstr "Meny"
+#: FMain.form:86
+msgid "Show Menubar"
+msgstr "Visa menyrad"
 
-#: FMain.form:93
+#: FMain.form:94
+msgid "Show Toolbar"
+msgstr "Visa verktygsrad"
+
+#: FMain.form:101
 msgid "Help"
 msgstr "Hjälp"
 
-#: FMain.form:97
+#: FMain.form:105
 msgid "About"
 msgstr "Om"
 
-#: FMain.form:104 FTest.form:18
-msgid "ToolBar1"
-msgstr ""
-
-#: FMain.form:111
+#: FMain.form:118
 msgid "Open"
 msgstr "Öppna"
 
-#: FMain.form:119
+#: FMain.form:126
 msgid "Save As"
 msgstr "Spara som"
 
-#: FMain.form:142
+#: FMain.form:149
 msgid "Mode:"
 msgstr "Läge:"
 
-#: FMain.form:149
+#: FMain.form:156
 msgid "Normal"
 msgstr "Normal"
 
-#: FMain.form:158
+#: FMain.form:165
 msgid "Translit"
-msgstr ""
+msgstr "Translitterera"
 
-#: FMain.form:166
+#: FMain.form:173
 msgid "Ignore"
 msgstr "Ignorera"
 
-#: FMain.form:171
+#: FMain.form:178
 msgid "Omit invalid characters from output."
-msgstr ""
+msgstr "Hoppa över ogiltiga tecken i utmatningen."
 
-#: FMain.form:173
+#: FMain.form:180
 msgid "Omit"
 msgstr "Hoppa över"
 
-#: FMain.form:188
+#: FMain.form:195
 msgid "From"
 msgstr "Från"
 
-#: FMain.form:209
+#: FMain.form:216
 msgid "File:"
 msgstr "Fil:"
 
-#: FMain.form:227
+#: FMain.form:234
 msgid "To"
 msgstr "Till"
 
-#: FMain.form:249
+#: FMain.form:256
 msgid "Preview"
 msgstr "Förhandsgranskning"
-
-#: FMain.form:270
-msgid "Label1"
-msgstr ""
-
-#: FTest.form:23
-msgid "ComboBox1"
-msgstr ""
-
-#: FTest.form:28
-msgid "ToolButton1"
-msgstr ""
-
-#: FTest.form:33
-msgid "ToolButton2"
-msgstr ""
-
-#: FTest.form:40
-msgid "TextArea1"
-msgstr ""
 
 #: MMain.module:12
 msgid "Dependency not satisfied, please install\n&1."

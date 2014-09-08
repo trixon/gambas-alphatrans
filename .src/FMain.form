@@ -30,14 +30,20 @@
       Shortcut = "Ctrl+Q"
     }
   }
-  { mnuView Menu
-    Text = ("View")
-    { mnuViewMenu Menu
+  { mnuSettings Menu
+    Text = ("Settings")
+    { mnuSettingsMenu Menu
       Action = "menubar"
-      Text = ("Menu")
+      Text = ("Show Menubar")
       Toggle = True
       Checked = True
-      Shortcut = "Ctrl+Alt+M"
+      Shortcut = "Ctrl+M"
+    }
+    { mnuSettingsToolbar Menu
+      Action = "toolbar"
+      Text = ("Show Toolbar")
+      Toggle = True
+      Checked = True
     }
   }
   { mnuHelp Menu
@@ -47,10 +53,9 @@
       Text = ("About")
     }
   }
-  { ToolBar1 ToolBar
+  { tlbMain ToolBar
     MoveScaled(0,0,100,4)
     Key = "MainToolbar"
-    Text = ("ToolBar1")
     Separator = True
     { tbtOpen ToolButton
       MoveScaled(0,0,9,4)
@@ -74,7 +79,7 @@
       Picture = Picture["icon:/medium/quit"]
     }
     { Separator1 Separator
-      MoveScaled(27.5,0,1,4)
+      MoveScaled(27.625,0,1,4)
     }
     { Panel4 Panel
       MoveScaled(29,0,2,4)
@@ -189,7 +194,6 @@
       Expand = True
       Padding = 4
       AutoResize = True
-      Text = ("Label1")
     }
   }
 }
@@ -206,8 +210,8 @@
     Shortcut = "Ctrl+W"
   }
   { Action menubar
-    Text = "Menu"
-    Shortcut = "Ctrl+Alt+M"
+    Text = "Show Menubar"
+    Shortcut = "Ctrl+M"
   }
   { Action open
     Text = "Open"
@@ -224,11 +228,15 @@
     Shortcut = "Ctrl+S"
     Picture = "icon:/medium/save-as"
   }
+  { Action toolbar
+    Text = "Show Toolbar"
+    Shortcut = ""
+  }
 }
 
 { Toolbars
   { Toolbar MainToolbar
-    Text = "ToolBar1"
+    Text = ""
     List = "open,save,quit"
     Default = "open,save,quit,|,-,$lblMode,$optNormal,$optTranslit,$optIgnore,$chkOmit"
   }

@@ -10,8 +10,8 @@
     Shortcut = "Ctrl+W"
   }
   { Action menubar
-    Text = "Menu"
-    Shortcut = "Ctrl+Alt+M"
+    Text = "Show Menubar"
+    Shortcut = "Ctrl+M"
   }
   { Action open
     Text = "Open"
@@ -28,11 +28,15 @@
     Shortcut = "Ctrl+S"
     Picture = "icon:/medium/save-as"
   }
+  { Action toolbar
+    Text = "Show Toolbar"
+    Shortcut = ""
+  }
 }
 
 { Toolbars
   { Toolbar MainToolbar
-    Text = "ToolBar1"
+    Text = ""
     List = "open,save,quit"
     Default = "open,save,quit,|,-,$lblMode,$optNormal,$optTranslit,$optIgnore,$chkOmit"
   }
