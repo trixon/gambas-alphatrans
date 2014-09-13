@@ -2,15 +2,7 @@
 
 Public Sub Main()
 
-  Dim aDependencyCheck As New String[]
-
-  If Not MSys.CommandInPath("file") Then aDependencyCheck.Add("file")
-  If Not MSys.CommandInPath("iconv") Then aDependencyCheck.Add("iconv")
-
-  If aDependencyCheck.Length > 0 Then
-    Message.Title = ("Error")
-    Message.Error(Subst(("Dependency not satisfied, please install\n&1."), aDependencyCheck.Join(", ")))
-  Else
+  If MSys.CheckDependencies(["file", "iconv"]) Then
     FMain.Run()
   Endif
 
