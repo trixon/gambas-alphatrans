@@ -181,12 +181,18 @@ Catch
 
 End
 
-Private Sub Preview()
+Private Sub PreviewDestFile()
 
   Dim sBaseCommand As String = "iconv --from-code &1 --to-code &2&3 &4 --output &5 &6"
   Dim sCommand As String
   Dim sStatus As String
   Dim sResult As String
+
+  If chkOmit.Value Then
+    $sOmit = "-c"
+  Else
+    $sOmit = ""
+  Endif
 
   File.Save($sTempFile, "")
   txaTo.Text = "Trying to load the converted file back to UTF-8"
@@ -203,18 +209,6 @@ Private Sub Preview()
 
   Try sResult = Conv(File.Load($sTempFile), lstTo.Text, "UTF-8")
   txaTo.Text = sResult
-
-End
-
-Public Sub Preview_Click()
-
-  'Preview()
-
-End
-
-Public Sub Preview_Select()
-
-  'Preview()
 
 End
 
@@ -281,33 +275,38 @@ End
 Public Sub Mode_Click()
 
   $sMode = Last.Tag
+  PreviewDestFile()
 
 End
 
 Public Sub chkOmit_Click()
 
-  If chkOmit.Value Then
-    $sOmit = "-c"
-  Else
-    $sOmit = ""
-  Endif
+  PreviewDestFile()
 
 End
 
 Public Sub lstFrom_Click()
 
-  PreviewSourceFile($sFilePath, lstFrom.Text)
+  '   UpdatePreview()
 
 End
 
 Public Sub lstFrom_Select()
 
-  PreviewSourceFile($sFilePath, lstFrom.Text)
+  UpdatePreview()
 
 End
 
 Public Sub lblStatusEncoding_MouseDown()
 
   lstFrom.Index = lstFrom.Find($sFileEncoding)
+
+End
+
+Private Sub UpdatePreview()
+
+  Debug
+  PreviewSourceFile($sFilePath, lstFrom.Text)
+  'PreviewDestFile()
 
 End
