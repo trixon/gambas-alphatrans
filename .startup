@@ -2,7 +2,7 @@ MMain
 Transalpha
 0
 0
-0.0.2
+0.0.3
 
 gb.image
 gb.gui
@@ -10,5 +10,5 @@ gb.form
 gb.desktop
 gb.settings
 gb.form.mdi
-/home/pata/git/gambas/gbiconv/libpkcommons.gambas
+/home/pata/git/gambas/transalpha/libpkcommons.gambas
 

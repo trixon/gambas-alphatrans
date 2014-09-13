@@ -1,4 +1,4 @@
-gambas-gbiconv
+gambas-transalpha
 ==============
 
-iconv ui written in Gambas
+Character encoding made easy
