@@ -3,7 +3,7 @@
 Title=Alphatrans
 Startup=MMain
 Icon=logo.png
-Version=0.0.4
+Version=0.0.5
 Component=gb.image
 Component=gb.gui
 Component=gb.form
@@ -13,10 +13,21 @@ Component=gb.form.mdi
 Library=/home/pata/git/gambas/alphatrans/libpkcommons.gambas
 Description="Character encoding made easy"
 Authors="Patrik Karlsson <patrik@trixon.se>"
-Environment="GB_GUImm=gb.qt4\nLC_ALLx=sv_SE.UTF-8\nLANGx=C\nLC_ALLx=C"
+Environment="GB_GUIx=gb.qt4\nLC_ALLx=sv_SE.UTF-8\nLANGx=C\nLC_ALLx=C"
 TabSize=2
 Translate=1
 Language=en
 KeepDebugInfo=0
 CreateShortcut=1
+SourcePath=/ask/Dropbox/Public/alphatrans
+Maintainer=Patrik Karlsson
+Vendor=Trixon
+Address=patrik@trixon.se
+Url=www.trixon.se
+License=General Public License
+PackageName=alphatrans-0.0.5
+CreateEachDirectory=1
 Packager=1
+Systems=ubuntu,autotools
+Menus=ubuntu:"Applications/File Management"
+Groups=ubuntu:"text"

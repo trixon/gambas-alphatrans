@@ -12,8 +12,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: .project:1
-msgid "Transalpha"
-msgstr "-"
+msgid "Alphatrans"
+msgstr "Alfatrans"
 
 #: .project:2 FMain.class:95
 msgid "Character encoding made easy"
@@ -28,8 +28,12 @@ msgid "&1 is a binary file."
 msgstr "&1 är en binär fil."
 
 #: FMain.class:185
-msgid "Preview from &1 is not possible.\nHowever, a conversion might still be possible."
-msgstr "Förhandsgranskning från &1 är inte möjlig.\nMen, en konvertering kan fortfarande vara möjlig."
+msgid ""
+"Can't preview from &1.\n"
+"Conversion might still be possible."
+msgstr ""
+"Kan inte förhandsgranska från &1.\n"
+"En konvertering kan fortfarande vara möjlig."
 
 #: FMain.class:248
 msgid "Preview (&1➜UTF-8)"
@@ -126,4 +130,3 @@ msgstr "Till"
 #: FMain.form:260
 msgid "Preview"
 msgstr "Förhandsgranskning"
-

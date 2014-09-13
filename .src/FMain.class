@@ -182,7 +182,7 @@ Finally
   txaFrom.Pos = 0
 
 Catch
-  txaFrom.Text = Subst(("Preview from &1 is not possible.\nHowever, a conversion might still be possible."), sEncoding)
+  txaFrom.Text = Subst(("Can't preview from &1.\nConversion might still be possible."), sEncoding)
   $bSourcePreviewLoaded = False
 
 End
