@@ -12,14 +12,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: .project:1
-msgid "gbiconv"
+msgid "Transalpha"
 msgstr "-"
 
-#: FMain.class:100
+#: .project:2 FMain.class:100
 msgid "Character encoding made easy"
-msgstr "Teckenkodning på ett enkelt sätt"
+msgstr "Teckenomkodning på ett enkelt sätt"
 
-#: FMain.class:149 MMain.module:11
+#: FMain.class:149
 msgid "Error"
 msgstr "Fel"
 
@@ -27,7 +27,7 @@ msgstr "Fel"
 msgid "Preview from &1 is not possible.\nHowever, a conversion might still be possible."
 msgstr "Förhandsgranskning från &1 är inte möjlig.\nMen, en konvertering kan fortfarande vara möjlig."
 
-#: FMain.class:263
+#: FMain.class:257
 msgid "Preview (&1➜UTF-8)"
 msgstr "Förhandsgranskning (&1➜UTF-8)"
 
@@ -118,8 +118,4 @@ msgstr "Till"
 #: FMain.form:256
 msgid "Preview"
 msgstr "Förhandsgranskning"
-
-#: MMain.module:12
-msgid "Dependency not satisfied, please install\n&1."
-msgstr ""
 
