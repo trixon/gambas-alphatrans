@@ -15,21 +15,29 @@ msgstr ""
 msgid "Transalpha"
 msgstr "-"
 
-#: .project:2 FMain.class:100
+#: .project:2 FMain.class:95
 msgid "Character encoding made easy"
 msgstr "Teckenomkodning på ett enkelt sätt"
 
-#: FMain.class:149
-msgid "Error"
-msgstr "Fel"
+#: FMain.class:175
+msgid "Warning"
+msgstr "Varning"
 
-#: FMain.class:163
+#: FMain.class:176
+msgid "&1 is a binary file."
+msgstr "&1 är en binär fil."
+
+#: FMain.class:185
 msgid "Preview from &1 is not possible.\nHowever, a conversion might still be possible."
 msgstr "Förhandsgranskning från &1 är inte möjlig.\nMen, en konvertering kan fortfarande vara möjlig."
 
-#: FMain.class:257
+#: FMain.class:248
 msgid "Preview (&1➜UTF-8)"
 msgstr "Förhandsgranskning (&1➜UTF-8)"
+
+#: FMain.class:250
+msgid "Encoding: &1  Type: &2  &3"
+msgstr "Kodning: &1  Typ: &2  &3"
 
 #: FMain.form:49
 msgid "File"
@@ -71,51 +79,51 @@ msgstr "Hjälp"
 msgid "About"
 msgstr "Om"
 
-#: FMain.form:118
+#: FMain.form:119
 msgid "Open"
 msgstr "Öppna"
 
-#: FMain.form:126
+#: FMain.form:128
 msgid "Save As"
 msgstr "Spara som"
 
-#: FMain.form:149
+#: FMain.form:152
 msgid "Mode:"
 msgstr "Läge:"
 
-#: FMain.form:156
+#: FMain.form:159
 msgid "Normal"
 msgstr "Normal"
 
-#: FMain.form:165
+#: FMain.form:168
 msgid "Translit"
 msgstr "Translitterera"
 
-#: FMain.form:173
+#: FMain.form:176
 msgid "Ignore"
 msgstr "Ignorera"
 
-#: FMain.form:178
+#: FMain.form:181
 msgid "Omit invalid characters from output."
 msgstr "Hoppa över ogiltiga tecken i utmatningen."
 
-#: FMain.form:180
+#: FMain.form:183
 msgid "Omit"
 msgstr "Hoppa över"
 
-#: FMain.form:195
+#: FMain.form:198
 msgid "From"
 msgstr "Från"
 
-#: FMain.form:216
+#: FMain.form:220
 msgid "File:"
 msgstr "Fil:"
 
-#: FMain.form:234
+#: FMain.form:238
 msgid "To"
 msgstr "Till"
 
-#: FMain.form:256
+#: FMain.form:260
 msgid "Preview"
 msgstr "Förhandsgranskning"
 

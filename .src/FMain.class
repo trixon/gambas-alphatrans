@@ -32,14 +32,11 @@ Public Sub Action_Activate(key As String) As Boolean
     Case "about"
       About()
 
-    Case "close"
-      CloseFile()
-
     Case "menubar"
       Menubar()
 
     Case "open"
-      RequestOpenFile()
+      OpenFileDialog()
 
     Case "quit"
       Me.Close
@@ -73,14 +70,12 @@ Public Sub Form_Open()
   tlbMain.Visible = Settings[KEY_TOOLBAR, True]
   mnuSettingsToolbar.Checked = tlbMain.Visible
 
-  txtFrom.SetFocus()
-
   $aCharacterSets = MSys.CharacterSets()
   lstFrom.List = MSys.CharacterSets()
   lstTo.List = lstFrom.List
   UpdateAvailability(False)
 
-  OpenFile("~/räksmörgås.txt")
+  '   OpenFile("~/räksmörgås.txt")
 
 End
 
@@ -105,30 +100,7 @@ Private Sub About()
 
 End
 
-Private Sub CloseFile()
-
-  txaFrom.Clear()
-  txaTo.Clear()
-  lstFrom.Index = 0
-  lstTo.Index = 0
-  UpdateAvailability(False)
-
-End
-
-Private Sub OpenFile(sFilePath As String)
-
-  $sFilePath = sFilePath
-  $sFileEncoding = MSys.MimeEncoding($sFilePath)
-  $sFileType = MSys.MimeType($sFilePath)
-
-  PreviewSourceFile($sFilePath, $sFileEncoding)
-  lstFrom.Index = lstFrom.Find($sFileEncoding)
-
-  UpdateAvailability(True)
-
-End
-
-Private Sub RequestOpenFile()
+Private Sub OpenFileDialog()
 
   Dialog.Title = ("Open")
 
@@ -140,24 +112,74 @@ Private Sub RequestOpenFile()
 
 End
 
+Private Sub OpenFile(sFilePath As String)
+
+  $sFilePath = sFilePath
+  $sFileEncoding = MSys.MimeEncoding($sFilePath)
+  $sFileType = MSys.MimeType($sFilePath)
+
+  PreviewSourceFile($sFilePath, $sFileEncoding)
+  lstFrom.Index = lstFrom.Find($sFileEncoding)
+  lstTo.Index = lstTo.Find($sFileEncoding)
+
+  UpdateAvailability(True)
+  txaFrom.SetFocus()
+
+End
+
+Private Sub Preview()
+
+  If ValidateSource() And ValidateDest() Then
+    PreviewSourceFile($sFilePath, lstFrom.Text)
+    PreviewDestFile()
+    UpdateStatusIndicators()
+  Endif
+
+End
+
+Private Sub PreviewDestFile()
+
+  Dim sBaseCommand As String = "iconv --from-code &1 --to-code &2&3 &4 --output &5 &6"
+  Dim sCommand As String
+  Dim sStatus As String
+  Dim sResult As String
+
+  If chkOmit.Value Then
+    $sOmit = "-c"
+  Else
+    $sOmit = ""
+  Endif
+
+  File.Save($sTempFile, "")
+  txaTo.Text = "Trying to load the converted file back to UTF-8"
+  sCommand = Subst(sBaseCommand, lstFrom.Text, lstTo.Text, $sMode, $sFilePath, $sTempFile, $sOmit) & " 2>&1"
+  Print sCommand
+  Try Shell sCommand To sStatus
+  sStatus = Trim(sStatus)
+
+  If sStatus Then
+    txaTo.Text = sStatus
+  Else
+    Try sResult = Conv(File.Load($sTempFile), lstTo.Text, "UTF-8")
+    txaTo.Text = sResult
+  Endif
+
+End
+
 Private Sub PreviewSourceFile(sPath As String, sEncoding As String)
 
   $sEncodeFrom = sEncoding
   $bSourcePreviewLoaded = True
 
   If sEncoding = "BINARY" Then
-    Message.Title = ("Error")
-    Message.Error(Subst("&1 is a binary file.", sPath))
-  Else
-    txaFrom.Text = Conv(File.Load(sPath), sEncoding, "UTF-8")
-    'txaTo.Text = $sFileEncoding
-    'lstFrom.Index = lstFrom.Find($sFileEncoding)
-    'lstTo.Index = lstTo.Find($sFileEncoding)
+    Message.Title = ("Warning")
+    Message.Warning(Subst(("&1 is a binary file."), sPath))
   Endif
+
+  txaFrom.Text = Conv(File.Load(sPath), sEncoding, "UTF-8")
 
 Finally
   txaFrom.Pos = 0
-  UpdateStatusIndicators()
 
 Catch
   txaFrom.Text = Subst(("Preview from &1 is not possible.\nHowever, a conversion might still be possible."), sEncoding)
@@ -178,37 +200,6 @@ Private Sub SaveFile()
 
 Catch
   Message.Info(Error.Text)
-
-End
-
-Private Sub PreviewDestFile()
-
-  Dim sBaseCommand As String = "iconv --from-code &1 --to-code &2&3 &4 --output &5 &6"
-  Dim sCommand As String
-  Dim sStatus As String
-  Dim sResult As String
-
-  If chkOmit.Value Then
-    $sOmit = "-c"
-  Else
-    $sOmit = ""
-  Endif
-
-  File.Save($sTempFile, "")
-  txaTo.Text = "Trying to load the converted file back to UTF-8"
-  sCommand = Subst(sBaseCommand, lstFrom.Text, lstTo.Text, $sMode, $sFilePath, $sTempFile, $sOmit) & " 2>&1"
-  Debug sCommand
-  Try Shell sCommand To sStatus
-  sStatus = Trim(sStatus)
-  Debug sStatus
-
-  If sStatus Then
-    Message.Title = ("Error")
-    Message.Error(sStatus)
-  Endif
-
-  Try sResult = Conv(File.Load($sTempFile), lstTo.Text, "UTF-8")
-  txaTo.Text = sResult
 
 End
 
@@ -254,9 +245,9 @@ End
 
 Private Sub UpdateStatusIndicators()
 
-  lblFrom.Text = Subst(("Preview (&1➜UTF-8)"), $sEncodeFrom) '$sFilePath
-  'lblStatus.Text = $sFileEncoding & " " & $sFileType
-  lblStatusEncoding.Text = Subst("Encoding: &1  Type: &2  &3", $sFileEncoding, $sFileType, $sFilePath)
+  lblFrom.Text = Subst(("Preview (&1➜UTF-8)"), $sEncodeFrom)
+  lblTo.Text = Subst(("Preview (&1➜UTF-8)"), lstTo.Text)
+  lblStatusEncoding.Text = Subst(("Encoding: &1  Type: &2  &3"), $sFileEncoding, $sFileType, $sFilePath)
 
 End
 
@@ -275,25 +266,13 @@ End
 Public Sub Mode_Click()
 
   $sMode = Last.Tag
-  PreviewDestFile()
+  Preview()
 
 End
 
 Public Sub chkOmit_Click()
 
-  PreviewDestFile()
-
-End
-
-Public Sub lstFrom_Click()
-
-  '   UpdatePreview()
-
-End
-
-Public Sub lstFrom_Select()
-
-  UpdatePreview()
+  Preview()
 
 End
 
@@ -303,10 +282,20 @@ Public Sub lblStatusEncoding_MouseDown()
 
 End
 
-Private Sub UpdatePreview()
+Public Sub CharacterSet_Select()
 
-  Debug
-  PreviewSourceFile($sFilePath, lstFrom.Text)
-  'PreviewDestFile()
+  Preview()
+
+End
+
+Private Function ValidateDest() As Boolean
+
+  Return lstTo.Index > -1
+
+End
+
+Private Function ValidateSource() As Boolean
+
+  Return lstFrom.Index > -1 And Exist($sFilePath)
 
 End

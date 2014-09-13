@@ -59,6 +59,7 @@
     Separator = True
     { tbtOpen ToolButton
       MoveScaled(0,0,9,4)
+      NoTabFocus = True
       Action = "open"
       AutoResize = True
       Text = ("Open")
@@ -66,6 +67,7 @@
     }
     { tbtSave ToolButton
       MoveScaled(10,0,7,4)
+      NoTabFocus = True
       Action = "save"
       AutoResize = True
       Text = ("Save As")
@@ -73,6 +75,7 @@
     }
     { tbtQuit ToolButton
       MoveScaled(19,0,7,4)
+      NoTabFocus = True
       Action = "quit"
       AutoResize = True
       Text = ("Quit")
@@ -131,7 +134,8 @@
       { txtFrom TextBox
         MoveScaled(1,5,24,4)
       }
-      { lstFrom ListBox
+      { lstFrom ListBox CharacterSet
+        Name = "lstFrom"
         MoveScaled(1,11,11,9)
         Expand = True
       }
@@ -163,7 +167,7 @@
       { txtTo TextBox
         MoveScaled(1,5,24,4)
       }
-      { lstTo ListBox Preview
+      { lstTo ListBox CharacterSet
         Name = "lstTo"
         MoveScaled(1,11,11,8)
         Expand = True
