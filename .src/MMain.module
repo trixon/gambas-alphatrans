@@ -4,8 +4,8 @@ Public Sub Main()
 
   Dim aDependencyCheck As New String[]
 
-  If Not MUtil.CommandInPath("file") Then aDependencyCheck.Add("file")
-  If Not MUtil.CommandInPath("iconv") Then aDependencyCheck.Add("iconv")
+  If Not MSys.CommandInPath("file") Then aDependencyCheck.Add("file")
+  If Not MSys.CommandInPath("iconv") Then aDependencyCheck.Add("iconv")
 
   If aDependencyCheck.Length > 0 Then
     Message.Title = ("Error")

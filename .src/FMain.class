@@ -75,8 +75,8 @@ Public Sub Form_Open()
 
   txtFrom.SetFocus()
 
-  $aCharacterSets = MUtil.CharacterSets()
-  lstFrom.List = MUtil.CharacterSets()
+  $aCharacterSets = MSys.CharacterSets()
+  lstFrom.List = MSys.CharacterSets()
   lstTo.List = lstFrom.List
   UpdateAvailability(False)
 
@@ -118,8 +118,8 @@ End
 Private Sub OpenFile(sFilePath As String)
 
   $sFilePath = sFilePath
-  $sFileEncoding = MUtil.MimeEncoding($sFilePath)
-  $sFileType = MUtil.MimeType($sFilePath)
+  $sFileEncoding = MSys.MimeEncoding($sFilePath)
+  $sFileType = MSys.MimeType($sFilePath)
 
   PreviewSourceFile($sFilePath, $sFileEncoding)
   lstFrom.Index = lstFrom.Find($sFileEncoding)
@@ -262,13 +262,13 @@ End
 
 Public Sub txtFrom_Change()
 
-  lstFrom.List = MUtil.FilterStringArray($aCharacterSets, txtFrom.Text)
+  lstFrom.List = MArrays.FilterStringArray($aCharacterSets, txtFrom.Text)
 
 End
 
 Public Sub txtTo_Change()
 
-  lstTo.List = MUtil.FilterStringArray($aCharacterSets, txtTo.Text)
+  lstTo.List = MArrays.FilterStringArray($aCharacterSets, txtTo.Text)
 
 End
 
