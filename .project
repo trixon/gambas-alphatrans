@@ -2,6 +2,7 @@
 # Compiled with Gambas 3.5.4
 Title=gbiconv
 Startup=MMain
+Icon=logo.png
 Version=0.0.2
 Component=gb.image
 Component=gb.gui
