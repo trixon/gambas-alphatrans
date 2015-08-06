@@ -1,19 +1,17 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2002-11-01 04:27+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: alphatrans 3.8.0\n"
+"PO-Revision-Date: 2015-08-06 13:52 UTC\n"
+"Last-Translator: Patrik Karlsson <patrik@trixon.se>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: .project:1
 msgid "Alphatrans"
-msgstr "Alfatrans"
+msgstr "-"
 
 #: .project:2 FMain.class:95
 msgid "Character encoding made easy"
@@ -28,12 +26,8 @@ msgid "&1 is a binary file."
 msgstr "&1 är en binär fil."
 
 #: FMain.class:185
-msgid ""
-"Can't preview from &1.\n"
-"Conversion might still be possible."
-msgstr ""
-"Kan inte förhandsgranska från &1.\n"
-"En konvertering kan fortfarande vara möjlig."
+msgid "Can't preview from &1.\nConversion might still be possible."
+msgstr "Kan inte förhandsgranska från &1.\nEn konvertering kan fortfarande vara möjlig."
 
 #: FMain.class:248
 msgid "Preview (&1➜UTF-8)"
@@ -48,16 +42,16 @@ msgid "File"
 msgstr "Arkiv"
 
 #: FMain.form:53
-msgid "Open..."
-msgstr "Öppna..."
+msgid "Open"
+msgstr "Öppna"
 
 #: FMain.form:59
 msgid "Close"
 msgstr "Stäng"
 
 #: FMain.form:67
-msgid "Save As..."
-msgstr "Spara som..."
+msgid "Save As"
+msgstr "Spara som"
 
 #: FMain.form:76
 msgid "Quit"
@@ -82,14 +76,6 @@ msgstr "Hjälp"
 #: FMain.form:105
 msgid "About"
 msgstr "Om"
-
-#: FMain.form:119
-msgid "Open"
-msgstr "Öppna"
-
-#: FMain.form:128
-msgid "Save As"
-msgstr "Spara som"
 
 #: FMain.form:152
 msgid "Mode:"
@@ -119,7 +105,7 @@ msgstr "Hoppa över"
 msgid "From"
 msgstr "Från"
 
-#: FMain.form:220
+#: FMain.form:221
 msgid "File:"
 msgstr "Fil:"
 
@@ -130,3 +116,4 @@ msgstr "Till"
 #: FMain.form:260
 msgid "Preview"
 msgstr "Förhandsgranskning"
+

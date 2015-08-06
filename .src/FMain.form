@@ -7,7 +7,7 @@
     Text = ("File")
     { mnuOpen Menu
       Action = "open"
-      Text = ("Open...")
+      Text = ("Open") & "..."
       Shortcut = "Ctrl+O"
     }
     { mnuClose Menu
@@ -19,7 +19,7 @@
     }
     { mnuSave Menu
       Action = "save"
-      Text = ("Save As...")
+      Text = ("Save As") & "..."
       Shortcut = "Ctrl+S"
     }
     { Menu1 Menu
@@ -145,6 +145,7 @@
       Expand = True
       { lblFrom Label
         MoveScaled(1,1,24,4)
+        Drop = True
         Padding = 2
         AutoResize = True
         Text = ("File:")

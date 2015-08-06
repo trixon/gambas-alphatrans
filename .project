@@ -1,19 +1,17 @@
 # Gambas Project File 3.0
-# Compiled with Gambas 3.5.4
+# Compiled with Gambas 3.8.0
 Title=Alphatrans
 Startup=MMain
 Icon=logo.png
-Version=0.0.6
+Version=0.0.8
 Component=gb.image
 Component=gb.gui
 Component=gb.form
-Component=gb.desktop
 Component=gb.settings
 Component=gb.form.mdi
 Library=/home/pata/git/gambas/alphatrans/libpkcommons.gambas
 Description="Character encoding made easy"
 Authors="Patrik Karlsson <patrik@trixon.se>"
-Environment="GB_GUIx=gb.qt4\nLC_ALLx=sv_SE.UTF-8\nLANGx=C\nLC_ALLx=C"
 TabSize=2
 Translate=1
 Language=en

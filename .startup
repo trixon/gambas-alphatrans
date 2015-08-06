@@ -2,12 +2,11 @@ MMain
 Alphatrans
 0
 0
-0.0.6
+0.0.7
 
 gb.image
 gb.gui
 gb.form
-gb.desktop
 gb.settings
 gb.form.mdi
 /home/pata/git/gambas/alphatrans/libpkcommons.gambas
